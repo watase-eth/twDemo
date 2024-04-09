@@ -6,6 +6,7 @@ import { TraditionalLogin } from "../../components/TraditionalLogin";
 import { InAppWalletLogin } from "../../components/InAppLogin";
 import { AccountAbstractionLogin } from "../../components/AccountAbstractionLogin";
 import { useActiveAccount } from "thirdweb/react";
+import { ClaimNFT } from "../../components/ClaimNFT";
 
 export default function Home() {
   const account = useActiveAccount();
@@ -44,6 +45,7 @@ export default function Home() {
       {account && (
         <>
           <p>Claim an NFT with TransactionButton or using Engine</p>
+          <ClaimNFT />
         </>
       )}
     </main>
