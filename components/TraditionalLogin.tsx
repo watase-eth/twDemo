@@ -2,8 +2,8 @@
 
 import { client } from "@/app/client";
 import { ConnectButton } from "thirdweb/react";
-import { baseSepolia } from "thirdweb/chains";
 import { createWallet, walletConnect } from "thirdweb/wallets";
+import { CHAIN } from "@/app/chain";
 
 const wallets = [
     createWallet("io.metamask"),
@@ -15,7 +15,7 @@ export const TraditionalLogin = () => {
     return (
         <ConnectButton
             client={client}
-            chain={ baseSepolia }
+            chain={CHAIN}
             wallets={wallets}
         />
     );
