@@ -6,13 +6,15 @@ export async function POST(
   const {
     ENGINE_URL,
     ENGINE_ACCESS_TOKEN,
-    ENGINE_WALLET
+    ENGINE_WALLET,
+    NFT_CONTRACT_ADDRESS,
+    CHAIN_ID
   } = process.env;
 
   const { userWalletAddress } = await req.json();
 
   try {
-    if(!ENGINE_URL || !ENGINE_ACCESS_TOKEN || !ENGINE_WALLET) {
+    if(!ENGINE_URL || !ENGINE_ACCESS_TOKEN || !ENGINE_WALLET || !NFT_CONTRACT_ADDRESS || !CHAIN_ID) {
       throw new Error('Engine credentials not found');
     }
 
@@ -21,7 +23,7 @@ export async function POST(
     }
 
     const response = await fetch(
-        `${ENGINE_URL}/contract/84532/0x01dC70687123875f92a8842Cf51C0F55f53fd44F/erc721/claim-to`,
+        `${ENGINE_URL}/contract/${CHAIN_ID}/${NFT_CONTRACT_ADDRESS}/erc721/claim-to`,
         {
             method: 'POST',
             headers: {

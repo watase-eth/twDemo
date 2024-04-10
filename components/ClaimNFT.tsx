@@ -4,15 +4,15 @@ import { TransactionButton, useActiveAccount } from "thirdweb/react";
 import { claimTo } from "thirdweb/extensions/erc721";
 import { getContract } from "thirdweb";
 import { client } from "@/app/client";
-import { baseSepolia } from "thirdweb/chains";
+import { CHAIN } from "@/app/chain";
 
 export const ClaimNFT = () => {
     const account = useActiveAccount();
 
-    const nftContractAddress = "0x01dC70687123875f92a8842Cf51C0F55f53fd44F";
+    const nftContractAddress = process.env.NFT_CONTRACT_ADDRESS as string;
     const contract = getContract({
         client: client,
-        chain: baseSepolia,
+        chain: CHAIN,
         address: nftContractAddress,
     });
 
